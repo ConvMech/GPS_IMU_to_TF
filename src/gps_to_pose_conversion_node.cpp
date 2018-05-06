@@ -58,12 +58,12 @@ void gps_callback(const sensor_msgs::NavSatFixConstPtr& msg)
     ROS_WARN_STREAM_THROTTLE(1, "No IMU data yet");
     return;
   }
-
+  /*
   if (msg->status.status < sensor_msgs::NavSatStatus::STATUS_FIX) {
     ROS_WARN_STREAM_THROTTLE(1, "No GPS fix");
     return;
   }
-
+  */
   if (!g_geodetic_converter.isInitialised()) {
     ROS_WARN_STREAM_THROTTLE(1, "No GPS reference point set, not publishing");
     return;
@@ -238,10 +238,10 @@ int main(int argc, char **argv) {
       nh.advertise<geometry_msgs::PointStamped>("gps_position", 1);
 
   // Subscribe to IMU and GPS fixes, and convert in GPS callback
-  ros::Subscriber imu_sub = nh.subscribe("imu", 1, &imu_callback);
-  ros::Subscriber gps_sub = nh.subscribe("gps", 1, &gps_callback);
+  ros::Subscriber imu_sub = nh.subscribe("/mavros/imu/data", 1, &imu_callback);
+  ros::Subscriber gps_sub = nh.subscribe("/mavros/global_position/global", 1, &gps_callback);
   ros::Subscriber altitude_sub =
-     nh.subscribe("external_altitude", 1, &altitude_callback);
+     nh.subscribe("/mavros/global_position/rel_alt2", 1, &altitude_callback);
 
   ros::spin();
 }

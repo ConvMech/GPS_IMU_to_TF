@@ -37,12 +37,12 @@ void gps_callback(const sensor_msgs::NavSatFixConstPtr & msg)
 
   if (!gps_ref_is_init){
 
-
+    /*
     if (msg->status.status < sensor_msgs::NavSatStatus::STATUS_FIX) {
       ROS_WARN_STREAM_THROTTLE(1, "No GPS fix");
       return;
     }
-
+	*/
     g_lat_ref += msg->latitude;
     g_lon_ref += msg->longitude;
     g_alt_ref += msg->altitude;
@@ -114,7 +114,7 @@ int main(int argc, char** argv)
       "Taking %d measurements and %s\n", g_its,
       (g_mode == MODE_AVERAGE) ? "averaging to get the reference" : "taking the last as reference");
 
-  ros::Subscriber gps_sub = nh.subscribe("gps", 1, &gps_callback);
+  ros::Subscriber gps_sub = nh.subscribe("/mavros/global_position/global", 1, &gps_callback);
   ros::ServiceServer reset_srv = nh.advertiseService("reset_gps_reference", &reset_callback);
 
   ros::spin();
