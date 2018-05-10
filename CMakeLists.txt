@@ -13,6 +13,7 @@ cs_add_executable(set_gps_reference_node src/set_gps_reference_node.cpp)
 target_link_libraries(set_gps_reference_node  ${catkin_LIBRARIES})
 
 cs_add_executable(gps_to_pose_conversion_node src/gps_to_pose_conversion_node.cpp)
+cs_add_executable(gps_to_pose_conversion_node2 src/gps_to_pose_conversion_node2.cpp)
 #target_link_libraries(gps_to_pose_conversion_node  ${catkin_LIBRARIES})
 
 cs_install()

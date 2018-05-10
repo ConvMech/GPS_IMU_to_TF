@@ -3,4 +3,6 @@
 	</node>
 	<node name="gps_to_pose_conversion_node" pkg="geodetic_utils" type="gps_to_pose_conversion_node" output="screen">
 	</node>
+	<node name="gps_to_pose_conversion_node2" pkg="geodetic_utils" type="gps_to_pose_conversion_node2" output="screen">
+	</node>
 </launch>

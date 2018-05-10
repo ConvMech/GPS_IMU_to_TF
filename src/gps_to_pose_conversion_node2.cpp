@@ -238,8 +238,8 @@ int main(int argc, char **argv) {
       nh.advertise<geometry_msgs::PointStamped>("gps_position", 1);
 
   // Subscribe to IMU and GPS fixes, and convert in GPS callback
-  ros::Subscriber imu_sub = nh.subscribe("/mavros/imu/data0", 1, &imu_callback);
-  ros::Subscriber gps_sub = nh.subscribe("/mavros/global_position/global0", 1, &gps_callback);
+  ros::Subscriber imu_sub = nh.subscribe("/mavros/imu/data1", 1, &imu_callback);
+  ros::Subscriber gps_sub = nh.subscribe("/mavros/global_position/global1", 1, &gps_callback);
   ros::Subscriber altitude_sub =
      nh.subscribe("/mavros/global_position/rel_alt2", 1, &altitude_callback);
 

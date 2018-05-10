@@ -114,7 +114,7 @@ int main(int argc, char** argv)
       "Taking %d measurements and %s\n", g_its,
       (g_mode == MODE_AVERAGE) ? "averaging to get the reference" : "taking the last as reference");
 
-  ros::Subscriber gps_sub = nh.subscribe("/mavros/global_position/global", 1, &gps_callback);
+  ros::Subscriber gps_sub = nh.subscribe("/mavros/global_position/global0", 1, &gps_callback);
   ros::ServiceServer reset_srv = nh.advertiseService("reset_gps_reference", &reset_callback);
 
   ros::spin();
